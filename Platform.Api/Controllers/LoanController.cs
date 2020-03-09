@@ -53,8 +53,8 @@ namespace Platform.Api.Controllers
                     Status = loan.Status.ToString(),
                     Result = loan.Status == LoanStatus.Processing ? null : loan.Result.ToString(),
                     Refused_Policity = loan.Status == LoanStatus.Processing ? null : loan.RefusedPolicity.ToString(),
-                    Amout = loan.Status == LoanStatus.Processing ? null : (decimal?)loan.Amount,
-                    Terms = loan.Status == LoanStatus.Processing ? null : (int?)loan.Terms
+                    Amout = loan.Result != LoanResult.Approved ? null : (decimal?)loan.Amount,
+                    Terms = loan.Result != LoanResult.Approved ? null : (int?)loan.Terms
                 };
 
                 return JsonConvert.SerializeObject(model);

@@ -1,4 +1,5 @@
 ﻿using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.DocumentModel;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -12,7 +13,8 @@ namespace Common.DataAccess
         Task<T> GetByIdAsync(string id);
         Task SaveAsync(T item);
         Task DeleteByIdAsync(T item);
-
+        Task<IEnumerable<T>> GetItems(IEnumerable<ScanCondition> conditions);
+        Task<IEnumerable<T>> GetItems(QueryFilter queryFilter);
 
 
     }

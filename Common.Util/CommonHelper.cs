@@ -18,6 +18,14 @@ namespace Common.Util
             }
         }
 
+        public static string NoverdeToken
+        {
+            get
+            {
+                return Configuracao.GetSection("NoverdeToken").Value;
+            }
+        }
+
         public static string UrlScore
         {
             get
@@ -31,6 +39,36 @@ namespace Common.Util
             get
             {
                 return Configuracao.GetSection("UrlCommitment").Value;
+            }
+        }
+
+        public static int MinScoreAccepted
+        {
+            get
+            {
+                try
+                {
+                    return Convert.ToInt32(Configuracao.GetSection("MinScoreAccepted").Value);
+                }
+                catch (Exception ex)
+                {
+                    return 600;
+                }
+            }
+        }
+
+        public static int MinAgeAccepted
+        {
+            get
+            {
+                try
+                {
+                    return Convert.ToInt32(Configuracao.GetSection("MinAgeAccepted").Value);
+                }
+                catch (Exception ex)
+                {
+                    return 18;
+                }
             }
         }
     }

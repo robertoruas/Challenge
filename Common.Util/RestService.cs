@@ -6,7 +6,7 @@ namespace Common.Util
 {
     public static class RestService
     {
-        public static string Send(string url, object data, Method method)
+        public static string Send(string url, string token, object data, Method method)
         {
             var client = new RestClient(url);
             var request = new RestRequest(method);

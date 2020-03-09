@@ -1,7 +1,9 @@
 ﻿using Amazon.DynamoDBv2;
 using Amazon.DynamoDBv2.DataModel;
+using Amazon.DynamoDBv2.DocumentModel;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Common.DataAccess
@@ -27,9 +29,20 @@ namespace Common.DataAccess
             return await base.LoadAsync<T>(id);
         }
 
+        public async Task<IEnumerable<T>> GetItems(IEnumerable<ScanCondition> conditions)
+        {
+            return await base.ScanAsync<T>(conditions).GetRemainingAsync();
+        }
+
+        public async Task<IEnumerable<T>> GetItems(QueryFilter queryFilter)
+        {
+            return await base.QueryAsync<T>(queryFilter).GetRemainingAsync();
+        }
+
         public async Task SaveAsync(T item)
         {
             await base.SaveAsync(item);
         }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Amazon.DynamoDBv2.DataModel;
+using System;
 
 namespace Common.Domain
 {
@@ -18,6 +19,7 @@ namespace Common.Domain
 
         public decimal Income { get; set; }
 
+        [DynamoDBGlobalSecondaryIndexHashKey("Index1")]
         public LoanStatus Status { get; set; }
 
         public LoanResult Result { get; set; }

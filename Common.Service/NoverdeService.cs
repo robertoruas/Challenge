@@ -13,11 +13,11 @@ namespace Common.Service
 			{
 				object data = new { CPF = cpf };
 
-				string ret = RestService.Send(CommonHelper.UrlScore, data, RestSharp.Method.POST);
+				string ret = RestService.Send(CommonHelper.UrlScore, CommonHelper.NoverdeToken, data, RestSharp.Method.POST);
 
 				Score score = JsonConvert.DeserializeObject<Score>(ret);
 
-				return score.Score;
+				return score.Points;
 			}
 			catch (Exception ex)
 			{
@@ -31,11 +31,11 @@ namespace Common.Service
 			{
 				object data = new { CPF = cpf };
 
-				string ret = RestService.Send(CommonHelper.UrlScore, data, RestSharp.Method.POST);
+				string ret = RestService.Send(CommonHelper.UrlCommitment, CommonHelper.NoverdeToken, data, RestSharp.Method.POST);
 
 				Commitment commitment = JsonConvert.DeserializeObject<Commitment>(ret);
 
-				return commitment.Commitment;
+				return commitment.Percentage;
 			}
 			catch (Exception ex)
 			{

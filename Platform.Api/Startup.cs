@@ -29,6 +29,7 @@ namespace Platform.Api
             var client = awsOptions.CreateServiceClient<IAmazonDynamoDB>();
 
             services.AddScoped<IDBContext<Loan>>(provider => new DBContext<Loan>(client));
+            services.AddScoped<IDBContext<Interest>>(provider => new DBContext<Interest>(client));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

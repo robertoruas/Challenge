@@ -6,6 +6,6 @@ namespace Common.Domain
 {
     public class Commitment
     {
-        public decimal Commitment { get; set; }
+        public decimal Percentage { get; set; }
     }
 }

@@ -6,6 +6,6 @@ namespace Common.Domain
 {
     public class Score
     {
-        public int Score { get; set; }
+        public int Points { get; set; }
     }
 }
